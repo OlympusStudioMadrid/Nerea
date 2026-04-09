@@ -174,6 +174,26 @@ const CATS_DEF = [
   },
 ];
 
+
+const STATIC_DATA = {
+  'CATERING': [
+    { name: 'IMG_6747.JPG', url: 'fotos/CATERING/IMG_6747.JPG' },
+    { name: 'IMG_6749.JPG', url: 'fotos/CATERING/IMG_6749.JPG' },
+    { name: 'IMG_6750.JPG', url: 'fotos/CATERING/IMG_6750.JPG' },
+    { name: 'IMG_6753.JPG', url: 'fotos/CATERING/IMG_6753.JPG' },
+    { name: 'IMG_6754.JPG', url: 'fotos/CATERING/IMG_6754.JPG' }
+  ],
+  'CEREMONIA': [],
+  'DECORACIÓN': [],
+  'FIESTA': [],
+  'FOTOS PASTEL': [],
+  'INVITADOS': [],
+  'PRE-FIESTA': []
+};
+
+
+
+
 /* ─────────────────────────────────────────────────────────
    ESTADO
    ───────────────────────────────────────────────────────── */
