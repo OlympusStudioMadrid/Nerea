@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="15 Vueltas al Sol — Galería privada familiar · Olympus Studio"/>
+  <title>15 Vueltas al Sol ✦ Galería Familiar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Pinyon+Script&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<canvas id="cosmosCanvas" aria-hidden="true"></canvas>
+
+<!-- ═══════ HERO ═══════ -->
+<header class="hero" id="top">
+
+  <div class="studio-header">
+    <div class="studio-logo-wrap">
+      <!--
+        PARA USAR TU LOGO:
+        Reemplaza el bloque <svg class="logo-svg"...> con:
+        <img src="logo-olympus.png" alt="Olympus Studio" class="logo-img"/>
+      -->
+      <svg class="logo-svg" viewBox="0 0 110 120" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stop-color="#FFE599"/>
+            <stop offset="45%"  stop-color="#D4A017"/>
+            <stop offset="100%" stop-color="#8B6000"/>
+          </linearGradient>
+          <filter id="glowF" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="2.5" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <polygon points="55,3 57,9.5 63.5,9.5 58.5,13.5 60.5,20 55,16 49.5,20 51.5,13.5 46.5,9.5 53,9.5"
+                 fill="url(#lg1)" filter="url(#glowF)"/>
+        <polygon points="55,22 15,95 31,95" fill="url(#lg1)"/>
+        <polygon points="55,22 79,95 95,95" fill="url(#lg1)"/>
+        <polygon points="55,22 67,58 43,58" fill="url(#lg1)" opacity=".9"/>
+        <polygon points="31,95 43,58 20,95" fill="url(#lg1)" opacity=".73"/>
+        <polygon points="79,95 67,58 90,95" fill="url(#lg1)" opacity=".73"/>
+        <line x1="43" y1="58" x2="55" y2="22" stroke="#100620" stroke-width="1" opacity=".4"/>
+        <line x1="67" y1="58" x2="55" y2="22" stroke="#100620" stroke-width="1" opacity=".4"/>
+        <line x1="43" y1="58" x2="31" y2="95" stroke="#100620" stroke-width="1" opacity=".3"/>
+        <line x1="67" y1="58" x2="79" y2="95" stroke="#100620" stroke-width="1" opacity=".3"/>
+      </svg>
+      <div class="studio-text">
+        <span class="studio-name">OLYMPUS</span>
+        <span class="studio-sub">Studio · Fotografía</span>
+      </div>
+    </div>
+
+    <a href="https://drive.google.com/drive/folders/1iWrt7DtsMPYcUYqSPUvTNIkNl_tuytnj?usp=sharing"
+       target="_blank" rel="noopener" class="drive-pill">
+      <svg viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg" height="16" style="flex-shrink:0">
+        <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
+        <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/>
+        <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
+        <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/>
+        <path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/>
+        <path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/>
+      </svg>
+      <span>Álbum en Drive</span>
+    </a>
+  </div>
+
+  <!-- Sistema solar -->
+  <div class="solar-wrap" aria-hidden="true">
+    <div class="solar-system" id="solarSystem">
+      <svg class="rings-svg" viewBox="0 0 600 600">
+        <ellipse cx="300" cy="300" rx="270" ry="78"  fill="none" stroke="rgba(212,160,23,0.13)"  stroke-width="1.2"/>
+        <ellipse cx="300" cy="300" rx="210" ry="61"  fill="none" stroke="rgba(155,89,197,0.16)"  stroke-width="1"/>
+        <ellipse cx="300" cy="300" rx="150" ry="44"  fill="none" stroke="rgba(72,199,142,0.12)"  stroke-width="1"/>
+        <ellipse cx="300" cy="300" rx="92"  ry="27"  fill="none" stroke="rgba(212,160,23,0.11)"  stroke-width="0.8"/>
+      </svg>
+      <div class="sun-core">
+        <div class="sun-rays-ring"></div>
+        <div class="sun-body">
+          <span class="sun-15">15</span>
+        </div>
+        <div class="sun-halo h1"></div>
+        <div class="sun-halo h2"></div>
+        <div class="sun-halo h3"></div>
+      </div>
+      <div id="planetsWrap"></div>
+    </div>
+  </div>
+
+  <!-- Texto hero -->
+  <div class="hero-content">
+    <p class="hero-eyebrow">Una celebración de</p>
+    <h1 class="hero-h1">Vueltas <em>al Sol</em></h1>
+    <div class="hero-rule">
+      <span class="rule-line"></span>
+      <svg class="rule-gem" viewBox="0 0 24 24"><polygon points="12,2 22,8 22,16 12,22 2,16 2,8" fill="none" stroke="currentColor" stroke-width="1.2"/><polygon points="12,6 18,10 18,14 12,18 6,14 6,10" fill="currentColor" opacity=".3"/></svg>
+      <span class="rule-line"></span>
+    </div>
+    <p class="hero-phrase">Cada vuelta, una historia.<br/>Cada foto, un destello eterno.</p>
+    <a href="#galeria" class="hero-cta">
+      Explorar galería
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12l4 4 4-4"/></svg>
+    </a>
+  </div>
+
+</header>
+
+<!-- ═══════ CATEGORÍAS ═══════ -->
+<section class="cats-section" id="galeria">
+  <div class="cats-intro">
+    <p class="sec-label">✦ Galería Privada Familiar ✦</p>
+    <h2 class="sec-title">Elige tu universo</h2>
+    <p class="sec-desc">Cada carpeta, un capítulo de este día irrepetible</p>
+  </div>
+  <div class="cats-grid" id="catsGrid">
+    <div class="cats-loading"><div class="spinner"></div></div>
+  </div>
+</section>
+
+<!-- ═══════ GALERÍA ═══════ -->
+<section class="gallery-section" id="gallerySection">
+  <div class="gallery-bar" id="galleryBar">
+    <button class="btn-back" onclick="G.goBack()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Volver
+    </button>
+    <div class="bar-center">
+      <span class="bar-icon" id="barIcon"></span>
+      <h3 class="bar-title" id="barTitle">—</h3>
+    </div>
+    <span class="bar-count" id="barCount"></span>
+  </div>
+
+  <div class="state-box state-loading" id="stateLoading">
+    <div class="spinner spinner--lg"></div>
+    <p>Cargando fotografías…</p>
+  </div>
+  <div class="state-box state-empty" id="stateEmpty">
+    <svg viewBox="0 0 100 80" class="empty-svg">
+      <circle cx="50" cy="40" r="36" fill="none" stroke="rgba(212,160,23,.25)" stroke-width="1.5"/>
+      <path d="M32 52 Q50 28 68 52" fill="none" stroke="rgba(212,160,23,.35)" stroke-width="1.5"/>
+      <circle cx="37" cy="34" r="3.5" fill="rgba(212,160,23,.4)"/>
+      <circle cx="63" cy="34" r="3.5" fill="rgba(212,160,23,.4)"/>
+    </svg>
+    <p id="emptyMsg">Selecciona una categoría para ver las fotografías.</p>
+  </div>
+
+  <div class="masonry" id="masonry"></div>
+</section>
+
+<!-- ═══════ LIGHTBOX ═══════ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <div class="lb-veil" id="lbVeil" onclick="G.lbClose()"></div>
+  <div class="lb-panel" id="lbPanel">
+
+    <div class="lb-topbar">
+      <div class="lb-topbar-left">
+        <span class="lb-cat" id="lbCat"></span>
+        <span class="lb-num" id="lbNum"></span>
+      </div>
+      <div class="lb-topbar-right">
+        <a class="lbt-btn lbt-download" id="lbDownload" download title="Descargar foto">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Descargar</span>
+        </a>
+        <button class="lbt-btn lbt-close" onclick="G.lbClose()" aria-label="Cerrar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="lb-stage">
+      <button class="lb-arrow lba-l" onclick="G.lbPrev()" aria-label="Anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="lb-frame" id="lbFrame">
+        <div class="lb-spin" id="lbSpin"><div class="spinner"></div></div>
+        <img id="lbImg" src="" alt="" draggable="false"/>
+      </div>
+      <button class="lb-arrow lba-r" onclick="G.lbNext()" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+    <div class="lb-strip" id="lbStrip"></div>
+  </div>
+</div>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="site-footer">
+  <div class="footer-nebula" aria-hidden="true"></div>
+  <div class="footer-inner">
+    <div class="footer-brand-block">
+      <svg class="footer-logo" viewBox="0 0 110 120" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="lg3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FFE599"/><stop offset="50%" stop-color="#D4A017"/><stop offset="100%" stop-color="#8B6000"/></linearGradient></defs>
+        <polygon points="55,3 57,9.5 63.5,9.5 58.5,13.5 60.5,20 55,16 49.5,20 51.5,13.5 46.5,9.5 53,9.5" fill="url(#lg3)"/>
+        <polygon points="55,22 15,95 31,95" fill="url(#lg3)"/>
+        <polygon points="55,22 79,95 95,95" fill="url(#lg3)"/>
+        <polygon points="55,22 67,58 43,58" fill="url(#lg3)" opacity=".9"/>
+        <polygon points="31,95 43,58 20,95" fill="url(#lg3)" opacity=".73"/>
+        <polygon points="79,95 67,58 90,95" fill="url(#lg3)" opacity=".73"/>
+      </svg>
+      <div>
+        <p class="footer-name">OLYMPUS Studio</p>
+        <p class="footer-tagline">Capturando lo que el tiempo no olvida</p>
+      </div>
+    </div>
+    <p class="footer-copy">Galería privada familiar · 15 Vueltas al Sol · © 2025</p>
+    <a href="https://drive.google.com/drive/folders/1iWrt7DtsMPYcUYqSPUvTNIkNl_tuytnj?usp=sharing"
+       target="_blank" rel="noopener" class="footer-drive-link">
+      <svg viewBox="0 0 87.3 78" height="13">
+        <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
+        <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/>
+        <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
+        <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/>
+        <path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/>
+        <path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/>
+      </svg>
+      Ver álbum completo en Google Drive
+    </a>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
