@@ -28,11 +28,11 @@ const FOTOS_CONFIG = {
 
   /* ── CATERING (5 fotos) ─────────────────────────────── */
   CATERING: [
-    'IMG_6747.jpg',
-    'IMG_6749.jpg',
-    'IMG_6750.jpg',
-    'IMG_6753.jpg',
-    'IMG_6754.jpg',
+    'IMG_6747.JPG',
+    'IMG_6749.JPG',
+    'IMG_6750.JPG',
+    'IMG_6753.JPG',
+    'IMG_6754.JPG',
   ],
 
   /* ── CEREMONIA (50 fotos) ───────────────────────────── */
