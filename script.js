@@ -28,11 +28,11 @@ const FOTOS_CONFIG = {
 
   /* ── CATERING (5 fotos) ─────────────────────────────── */
   CATERING: [
-    'IMG_6747.JPG',
-    'IMG_6749.JPG',
-    'IMG_6750.JPG',
-    'IMG_6753.JPG',
-    'IMG_6754.JPG',
+    'IMG_6747.jpg',
+    'IMG_6749.jpg',
+    'IMG_6750.jpg',
+    'IMG_6753.jpg',
+    'IMG_6754.jpg',
   ],
 
   /* ── CEREMONIA (50 fotos) ───────────────────────────── */
@@ -42,19 +42,19 @@ const FOTOS_CONFIG = {
 
   /* ── DECORACIÓN (30 fotos) ──────────────────────────── */
   DECORACION: [
-    'IMG_6336.JPG',
-    'IMG_6337.JPG',
-    'IMG_6338.JPG',
-    'IMG_6341.JPG',
-    'IMG_6344.JPG',
-    'IMG_6346.JPG',
-    'IMG_6347.JPG',
-    'IMG_6348.JPG',
-    'IMG_6349.JPG',
-    'IMG_6350.JPG',
-    'IMG_6352.JPG',
-    'IMG_6356.JPG',
-    'IMG_6358.JPG',
+    'IMG_6336.jpg',
+    'IMG_6337.jpg',
+    'IMG_6338.jpg',
+    'IMG_6341.jpg',
+    'IMG_6344.jpg',
+    'IMG_6346.jpg',
+    'IMG_6347.jpg',
+    'IMG_6348.jpg',
+    'IMG_6349.jpg',
+    'IMG_6350.jpg',
+    'IMG_6352.jpg',
+    'IMG_6356.jpg',
+    'IMG_6358.jpg',
     'IMG_6359.JPG',
     'IMG_6361.JPG',
     'IMG_6362.JPG',
