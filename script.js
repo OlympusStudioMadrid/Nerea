@@ -222,33 +222,33 @@ function renderGallery(category) {
   const emptyState = document.getElementById('emptyState');
   const countEl    = document.getElementById('photoCount');
 
-  grid.innerHTML = ''; // Limpiamos el grid inmediatamente
+  grid.innerHTML = ''; 
 
   if (category === 'all') {
-    // Lógica Senior: Seleccionamos solo 15 de cada categoría para la home
-    filtered = [];
+    let pool = [];
+    
+    // 1. Extraemos una muestra de cada categoría
     Object.keys(FOTOS_CONFIG).forEach(catKey => {
       const meta = CATEGORY_META[catKey];
-      // Tomamos solo las primeras 15 de cada una
-      const limitedFiles = FOTOS_CONFIG[catKey].slice(0, 15);
-      
-      limitedFiles.forEach(filename => {
-        filtered.push({
-          src:      `${meta.folder}/${filename}`,
-          category: catKey,
-          label:    meta.label,
-          filename,
-        });
-      });
+      // Tomamos 15 de cada una (o las que existan si son menos)
+      const sample = FOTOS_CONFIG[catKey].slice(0, 15).map(filename => ({
+        src:      `${meta.folder}/${filename}`,
+        category: catKey,
+        label:    meta.label,
+        filename,
+      }));
+      pool = pool.concat(sample);
     });
-    // Opcional: Podrías desordenarlas un poco si quieres variedad
-    // filtered.sort(() => Math.random() - 0.5); 
+
+    // 2. Mezclamos el pool total para que las categorías se intercalen
+    filtered = shuffleArray(pool);
+    
   } else {
-    // Si es una categoría específica, cargamos TODO ese álbum
+    // Para categorías específicas, mostramos todo el álbum sin mezclar (orden original)
     filtered = allPhotos.filter(p => p.category === category);
   }
 
-  // UI Updates
+  // --- El resto del código de renderizado (UI, loops, etc.) se mantiene igual ---
   if (filtered.length === 0) {
     emptyState.style.display = 'block';
     countEl.textContent = '0 fotografías';
@@ -256,21 +256,17 @@ function renderGallery(category) {
   }
 
   emptyState.style.display = 'none';
-  const totalTxt = category === 'all' ? `Mostrando una selección (${filtered.length} fotos)` : `${filtered.length} fotografías`;
-  countEl.textContent = totalTxt;
+  countEl.textContent = category === 'all' 
+    ? `Explora una selección de momentos (${filtered.length} fotos)` 
+    : `${filtered.length} fotografías en ${category}`;
 
-  // Renderizado optimizado
   filtered.forEach((photo, idx) => {
     const item = document.createElement('div');
     item.className = 'masonry-item';
-    // Mantenemos el escalonado de animación pero con un tope
     item.style.animationDelay = `${Math.min(idx * 20, 500)}ms`;
 
     item.innerHTML = `
-      <img src="${photo.src}" 
-           alt="${photo.label}" 
-           loading="lazy" 
-           decoding="async">
+      <img src="${photo.src}" alt="${photo.label}" loading="lazy" decoding="async">
       <div class="masonry-item__overlay">
         <div class="masonry-item__overlay-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -438,3 +434,15 @@ console.info(
   'color:#F5C430;font-weight:bold;font-size:13px;',
   'color:#9B59D6;font-size:11px;'
 );
+
+
+/**
+ * Algoritmo Fisher-Yates para mezclar arrays de forma aleatoria y homogénea
+ */
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
