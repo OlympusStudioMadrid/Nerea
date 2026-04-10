@@ -150,9 +150,9 @@ const FOTOS_CONFIG = {
 const CATEGORY_META = {
   CATERING:     { label: 'Catering',     folder: 'CATERING',      icon: '🍽' },
   CEREMONIA:    { label: 'Ceremonia',    folder: 'CEREMONIA',     icon: '🌸' },
-  DECORACION:   { label: 'Decoración',   folder: 'DECORACIÓN',    icon: '🎀' },
+  DECORACION:   { label: 'Decoración',   folder: 'DECORACION',    icon: '🎀' },
   FIESTA:       { label: 'Fiesta',       folder: 'FIESTA',        icon: '✨' },
-  FOTOS_PASTEL: { label: 'Fotos Pastel', folder: 'FOTOS PASTEL',  icon: '🎂' },
+  FOTOS_PASTEL: { label: 'Fotos Pastel', folder: 'FOTOS_PASTEL',  icon: '🎂' },
   INVITADOS:    { label: 'Invitados',    folder: 'INVITADOS',     icon: '💛' },
   PRE_FIESTA:   { label: 'Pre-Fiesta',   folder: 'PRE-FIESTA',    icon: '🌟' },
 };
