@@ -222,12 +222,33 @@ function renderGallery(category) {
   const emptyState = document.getElementById('emptyState');
   const countEl    = document.getElementById('photoCount');
 
-  filtered = category === 'all'
-    ? [...allPhotos]
-    : allPhotos.filter(p => p.category === category);
+  grid.innerHTML = ''; // Limpiamos el grid inmediatamente
 
-  grid.innerHTML = '';
+  if (category === 'all') {
+    // Lógica Senior: Seleccionamos solo 15 de cada categoría para la home
+    filtered = [];
+    Object.keys(FOTOS_CONFIG).forEach(catKey => {
+      const meta = CATEGORY_META[catKey];
+      // Tomamos solo las primeras 15 de cada una
+      const limitedFiles = FOTOS_CONFIG[catKey].slice(0, 15);
+      
+      limitedFiles.forEach(filename => {
+        filtered.push({
+          src:      `${meta.folder}/${filename}`,
+          category: catKey,
+          label:    meta.label,
+          filename,
+        });
+      });
+    });
+    // Opcional: Podrías desordenarlas un poco si quieres variedad
+    // filtered.sort(() => Math.random() - 0.5); 
+  } else {
+    // Si es una categoría específica, cargamos TODO ese álbum
+    filtered = allPhotos.filter(p => p.category === category);
+  }
 
+  // UI Updates
   if (filtered.length === 0) {
     emptyState.style.display = 'block';
     countEl.textContent = '0 fotografías';
@@ -235,37 +256,34 @@ function renderGallery(category) {
   }
 
   emptyState.style.display = 'none';
-  countEl.textContent = `${filtered.length} fotografía${filtered.length !== 1 ? 's' : ''}`;
+  const totalTxt = category === 'all' ? `Mostrando una selección (${filtered.length} fotos)` : `${filtered.length} fotografías`;
+  countEl.textContent = totalTxt;
 
+  // Renderizado optimizado
   filtered.forEach((photo, idx) => {
     const item = document.createElement('div');
     item.className = 'masonry-item';
-    item.style.animationDelay = `${Math.min(idx * 30, 700)}ms`;
+    // Mantenemos el escalonado de animación pero con un tope
+    item.style.animationDelay = `${Math.min(idx * 20, 500)}ms`;
 
-    const img = document.createElement('img');
-    img.src      = photo.src;
-    img.alt      = `${photo.label} — foto ${idx + 1}`;
-    img.loading  = 'lazy';
-    img.decoding = 'async';
+    item.innerHTML = `
+      <img src="${photo.src}" 
+           alt="${photo.label}" 
+           loading="lazy" 
+           decoding="async">
+      <div class="masonry-item__overlay">
+        <div class="masonry-item__overlay-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/>
+          </svg>
+        </div>
+      </div>
+    `;
 
-    const overlay = document.createElement('div');
-    overlay.className = 'masonry-item__overlay';
-    overlay.innerHTML = `
-      <div class="masonry-item__overlay-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"/>
-          <path d="m21 21-4.35-4.35"/>
-          <path d="M11 8v6M8 11h6"/>
-        </svg>
-      </div>`;
-
-    item.appendChild(img);
-    item.appendChild(overlay);
     item.addEventListener('click', () => openLightbox(idx));
     grid.appendChild(item);
   });
 }
-
 /* ══════════════════════════════════════════════════════════
    LIGHTBOX
 ══════════════════════════════════════════════════════════ */
