@@ -37,7 +37,39 @@ const FOTOS_CONFIG = {
 
   /* ── CEREMONIA (50 fotos) ───────────────────────────── */
   CEREMONIA: [
-    
+   'IMG_6492.jpg',
+   'IMG_6496.jpg',
+   'IMG_6510.jpg',
+   'IMG_6513.jpg',
+   'IMG_6519.jpg',
+   'IMG_6529.jpg',
+   'IMG_6542.jpg',
+   'IMG_6543.jpg',
+   'IMG_6545.jpg',
+   'IMG_6549.jpg',
+   'IMG_6552.jpg',
+   'IMG_6559.jpg',
+   'IMG_6565.jpg',
+   'IMG_6573.jpg',
+   'IMG_6585.jpg',
+   'IMG_6590.jpg',
+   'IMG_6592.jpg',
+   'IMG_6630.jpg',
+   'IMG_6639.jpg',
+   'IMG_6644.jpg',
+   'IMG_6647.jpg',
+   'IMG_6660.jpg',
+   'IMG_6661.jpg',
+   'IMG_6665.jpg',
+   'IMG_6668.jpg',
+   'IMG_6669.jpg',
+   'IMG_6671.jpg',
+   'IMG_6682.jpg',
+   'IMG_6688.jpg',
+   'IMG_6725.jpg',
+   'IMG_6742.jpg',
+   'IMG_6803.jpg',
+   'IMG_6804.jpg' 
   ],
 
   /* ── DECORACIÓN (30 fotos) ──────────────────────────── */
