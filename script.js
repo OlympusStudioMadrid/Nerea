@@ -203,8 +203,20 @@ const FOTOS_CONFIG = {
 
   /* ── PRE-FIESTA (25 fotos) ──────────────────────────── */
   PRE_FIESTA: [
-    
-  ],
+  'IMG_6400.jpg',
+  'IMG_6409.jpg',
+  'IMG_6417.jpg',
+  'IMG_6418.jpg',
+  'IMG_6425.jpg',
+  'IMG_6429.jpg',
+  'IMG_6432.jpg',
+  'IMG_6438.jpg',
+  'IMG_6440.jpg',
+  'IMG_6445.jpg',
+  'IMG_6448.jpg',
+  'IMG_6449.jpg',
+  'IMG_6452.jpg'
+],
 };
 
 /* ══════════════════════════════════════════════════════════
